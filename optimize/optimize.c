@@ -14,7 +14,7 @@ double calc_norm(const int dim, double v[])
 }
 
 int optimize(const double alpha, const int dim, double x[], 
-             void (*calc_grad)(const double [], double []))
+             void (*calc_grad)(const double [], double []),double (*calc_value) (const double []) )
 {
   // 勾配ベクトルを記録する領域を確保
   double *g = malloc(dim * sizeof(double));
@@ -31,9 +31,11 @@ int optimize(const double alpha, const int dim, double x[],
     for (int i = 0; i < dim; i++) {
       printf(", x[%d] = %7.4f", i, x[i]);
     }
+    const double value = calc_value(x);
+    printf(", value : %lf",value);
     printf("\n");
 
-    if (norm < 0.005) break;
+    if (norm < 0.01) break;
 
     // 最急降下法による更新
     for (int i = 0; i < dim; i++) {
