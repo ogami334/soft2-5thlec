@@ -21,7 +21,7 @@ int optimize(const double alpha, const int dim, double x[], const Sample *sample
   double *g = malloc(dim * sizeof(double));
 
   int iter = 0;
-  while (++iter < 100) {
+  while (++iter < 10000) {
 
     // 引数で渡された関数を使って勾配ベクトルを計算
     (*calc_grad)(x, g, sample, data);
@@ -36,7 +36,7 @@ int optimize(const double alpha, const int dim, double x[], const Sample *sample
     printf(", value : %lf",value);
     printf("\n");
 
-    if (norm < 100) break;
+    if (norm < 0.01) break;
 
     // 最急降下法による更新
     for (int i = 0; i < dim; i++) {

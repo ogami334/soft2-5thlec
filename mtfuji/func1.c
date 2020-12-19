@@ -31,6 +31,8 @@ double f_value(const double x[],const Sample *sample,const int n)
 
 void f_gradient(const double x[], double g[],const Sample *sample,const int n)
 {
+  g[0] =0;
+  g[1] =0;
   for (int i=0;i<n;i++) {
     g[0] += 2 * (sample[i].temp - x[0] * sample[i].alt -x[1]) * (-sample[i].alt);
     g[1] += 2 * (sample[i].temp - x[0] * sample[i].alt -x[1]) * (-1);
