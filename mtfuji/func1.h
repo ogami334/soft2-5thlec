@@ -11,8 +11,8 @@ typedef struct
 
 int f_dimension();
 
-double f_value(const double x[]);
+double f_value(const double x[],const Sample *sample,const int n);
 
-void f_gradient(const double x[], double g[]);
+void f_gradient(const double x[], double g[],const Sample *sample,const int n);
 
 #endif

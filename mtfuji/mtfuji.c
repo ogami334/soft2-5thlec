@@ -20,7 +20,6 @@ int main(const int argc, const char **argv)
         sample[data].loc = (char *) malloc(sizeof(char) * 20);
         sscanf(buf,"%s %lf, %lf",sample[data].loc,&sample[data].alt,&sample[data].temp);
         data++;
-        //printf("%s\n",buf);
     }
     qsort(sample,data,sizeof(sample[0]),comp_alt);
     for (int i=0;i<data;i++) {
@@ -40,7 +39,7 @@ int main(const int argc, const char **argv)
 
     printf("alpha = %f\n", alpha);
 
-    const int iter = optimize(alpha, dim, x, f_gradient,f_value);
+    const int iter = optimize(alpha, dim, x, sample, data, f_gradient,f_value);
 
     printf("number of iterations = %d\n", iter);
 
