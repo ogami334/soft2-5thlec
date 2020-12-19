@@ -9,7 +9,11 @@ int main(const int argc, const char **argv)
     FILE *fp;
     int data =0; //データの個数
     Sample *sample = (Sample *) malloc(sizeof(Sample) *50);
-    if ((fp = fopen("data.csv","r")) == NULL ) {
+    if (argc < 2) {
+      printf("./mtfuji <filename> <alpha>\n");
+      return 0;
+    }
+    if ((fp = fopen(argv[1],"r")) == NULL ) {
         printf("cannot open data.csv");
     }
     while (1) {
@@ -28,7 +32,7 @@ int main(const int argc, const char **argv)
         printf("%.2lf\n",sample[i].temp);
     }
     // 引数の個数が1の時だけ、alpha に第1引数を採用し、それ以外は0.01
-    const double alpha = (argc == 2) ? atof(argv[1]) : 0.01;
+    const double alpha = (argc == 3) ? atof(argv[2]) : 0.01;
 
     const int dim = f_dimension();
 
