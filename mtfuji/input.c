@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "optimize.h"
 #include "func1.h"
 #include "sort.h"
 
-int main(const int argc, const char **argv)
-{
+int main(int argc, char **argv) {
     FILE *fp;
     int data =0; //データの個数
     Sample *sample = (Sample *) malloc(sizeof(Sample) *50);
@@ -28,25 +26,4 @@ int main(const int argc, const char **argv)
         printf("%.2lf, ",sample[i].alt);
         printf("%.2lf\n",sample[i].temp);
     }
-    // 引数の個数が1の時だけ、alpha に第1引数を採用し、それ以外は0.01
-    const double alpha = (argc == 2) ? atof(argv[1]) : 0.01;
-
-    const int dim = f_dimension();
-
-    double *x = malloc(dim * sizeof(double));
-    for (int i = 0; i < dim; i++) {
-      x[i] = 0;
-    }
-
-    printf("alpha = %f\n", alpha);
-
-    const int iter = optimize(alpha, dim, x, f_gradient,f_value);
-
-    printf("number of iterations = %d\n", iter);
-
-    free(x);
-
-    return 0;
-
 }
-
