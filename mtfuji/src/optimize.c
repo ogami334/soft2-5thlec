@@ -36,7 +36,10 @@ int optimize(const double alpha, const int dim, double x[], const Sample *sample
     printf(", value : %lf",value);
     printf("\n");
 
-    if (norm < 0.01) break;
+    if (norm < 0.01) {
+        printf("Temperature at the top of mtfuji is %lf degrees Celsius\n",3.776*x[0]+x[1]);
+        break;
+    }
 
     // 最急降下法による更新
     for (int i = 0; i < dim; i++) {

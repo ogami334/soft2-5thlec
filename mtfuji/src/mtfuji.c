@@ -46,7 +46,6 @@ int main(const int argc, const char **argv)
     const int iter = optimize(alpha, dim, x, sample, data, f_gradient,f_value);
 
     printf("number of iterations = %d\n", iter);
-
     free(x);
 
     return 0;
