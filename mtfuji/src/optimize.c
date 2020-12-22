@@ -28,15 +28,15 @@ int optimize(const double alpha, const int dim, double x[], const Sample *sample
 
     // 勾配ベクトルのノルムを評価
     const double norm = calc_norm(dim, g);
-    printf("%3d norm = %7.4f", iter, norm);
-    for (int i = 0; i < dim; i++) {
+    //printf("%3d norm = %7.4f", iter, norm);
+    /*for (int i = 0; i < dim; i++) {
       printf(", x[%d] = %7.4f", i, x[i]);
-    }
+    }*/
     const double value = calc_value(x,sample,data);
-    printf(", value : %lf",value);
-    printf("\n");
+    //printf(", value : %lf",value);
+    //printf("\n");
 
-    if (norm < 0.01) {
+    if (norm < 0.0001) {
         printf("Temperature at the top of mtfuji is %lf degrees Celsius\n",3.776*x[0]+x[1]);
         break;
     }
